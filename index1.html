@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+正则表达式：对字符串进行匹配（regular  expression）
+如何使用正则表达式
+创建正则表达式
+1、var reg=/pattern/[g,i];
+2、var reg=new RegExp("pattern",[g,i]);
+g:全文查找出所有匹配到的东西  i:忽略大小写
+<script>
+    var str="abadedaeacABC";
+    var reg=/a/gi;   //定义一个正则表达式去匹配b
+    //alert(reg.test(str));   //看能否匹配成功  能输出true  不能输出false
+    //alert(str.match(reg));  //match的特性：在没有加g的情况下 只要匹配到一个 就会立马返回
+    //正则表达式里面给我们准备了几个快捷的转义
+    /*
+     \s   空格
+     \S   非空格
+     \d   匹配数字
+     \D   匹配非数字
+     \w   字母、数字、下划线
+     \W   非字母、数字、下划线
+     */
+    var str2="123456789";
+    var reg2=/\D/;
+    if (reg2.test(str2)){
+        //意味着匹配到了数字  因此 \D可以用来检测一个变量是否全是由数字组成
+        alert("不全是数字");
+    }else {
+        alert("全是数字");
+    }
+    //alert(str.search(reg));  //查找  返回索引下标
+    alert(str.replace(reg,"z"));  //替换  把a替换成z  如果写成（“a”，“z”）那只能替换最前面的a 要用到reg才会全部替换
+
+    var str3="人是人他妈生的，妖是妖他妈生的，人妖是人妖他妈生的，你他妈是谁生的";
+    //匹配多个  用|
+    var reg3=/他妈|人妖|你他妈/g;
+    //alert(str3.replace(reg3,"**"));
+</script>
+
+</body>
+</html>
